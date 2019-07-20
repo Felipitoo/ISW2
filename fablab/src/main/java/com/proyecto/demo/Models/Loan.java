@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Table(name = "tbl_loan")
 public class Loan {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "LOAN_NUMBER")
     private int loan_number;
 

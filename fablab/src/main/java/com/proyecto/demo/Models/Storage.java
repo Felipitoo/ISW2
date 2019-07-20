@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Table(name = "tbl_storage")
 public class Storage {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID_STORAGE")
     private int id_storage;
 

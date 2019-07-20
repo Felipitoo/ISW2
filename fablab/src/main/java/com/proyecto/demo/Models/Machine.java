@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Table(name = "tbl_machine")
 public class Machine {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID_MACHINE")
     private int id_machine; //PK
 

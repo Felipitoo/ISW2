@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "tbl_external")
 public class External {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID_EXTERNAL")
     private int id_external;
 

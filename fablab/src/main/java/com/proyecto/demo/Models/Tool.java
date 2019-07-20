@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Table(name = "tbl_tool")
 public class Tool {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID_TOOL")
     public int id_tool;
 
