@@ -28,6 +28,12 @@ public class External {
         this.rut = rut;
     }
 
+    public External(External external) {
+        this.id_external = getId_external();
+        this.name = getName();
+        this.rut = getRut();
+    }
+
     public String getName() {
         return name;
     }

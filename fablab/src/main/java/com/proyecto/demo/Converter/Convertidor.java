@@ -1,5 +1,6 @@
 package com.proyecto.demo.Converter;
 
+import com.proyecto.demo.Models.External;
 import com.proyecto.demo.Models.Loan;
 import com.proyecto.demo.Models.Tool;
 import org.springframework.stereotype.Component;
@@ -22,5 +23,13 @@ public class Convertidor {
             list_tools.add(new Tool(tool));
         }
         return list_tools;
+    }
+
+    public List<External> convertirListaExternal(List<External> externals) {
+        List<External> list_external = new ArrayList<>();
+        for(External external : externals){
+            list_external.add(new External(external));
+        }
+        return list_external;
     }
 }

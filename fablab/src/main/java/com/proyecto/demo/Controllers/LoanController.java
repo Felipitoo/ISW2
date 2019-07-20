@@ -1,8 +1,11 @@
 package com.proyecto.demo.Controllers;
 
+import com.proyecto.demo.Models.External;
 import com.proyecto.demo.Models.Tool;
+
 import com.proyecto.demo.Services.LoanService;
 import com.proyecto.demo.Services.ToolService;
+import com.proyecto.demo.Services.ExternalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +24,8 @@ public class LoanController {
     private LoanService LoanService;
     @Autowired
     private ToolService ToolService;
+    @Autowired
+    private ExternalService ExternalService;
 
     @GetMapping("/loan")
     public ModelAndView devolverDisponibles(){
@@ -38,7 +43,13 @@ public class LoanController {
         System.out.println(rut);
         System.out.println(date);
         System.out.println(tool_id);
+        External new_external = new External();
+        new_external.setName(full_name);
+        new_external.setRut(rut);
+        ExternalService.crear(new_external);
         return "redirect:/formulario/loan";
+
+
     }
 
 
