@@ -44,24 +44,23 @@
 <div class="body">
     <div class="container" id="container">
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form th:action="@{/formulario/enviar}" method="post">
                 <h1 class="h1">Formulario de Prestamos</h1>
-                <input type="text" name="full-name" placeholder="Nombre Completo">
-                <input type="text" name="rut" placeholder="Rut (sin puntos ni guión)">
 
-                <tr th:each="tool : ${tools}">
-                    <select>
-                        <option th:value="${tool.id_tool}">herramienta</option>
+                <tr th:if="${not tools.isEmpty()}">
+                    <input type="text" name="full_name" placeholder="Nombre Completo">
+                    <input type="text" name="rut" placeholder="Rut (sin puntos ni guión)">
+                    <select name="tool_id">
+                        <tr th:each="tool : ${tools}">
+                            <option th:value="${tool.id_tool}" th:text="${tool.getName()}"></option>
+                        </tr>
                     </select>
+                    <input type="date" name="date" placeholder="Fecha de prestamo" >
+                    <button class="button">Enviar Petición</button>
                 </tr>
-
-                <input type="date" name="date" placeholder="Fecha de prestamo" >
 
                 <tr th:if="${tools.isEmpty()}">
                     <td colspan="2"> No hay herramientas disponibles </td>
-                </tr>
-                <tr th:if="${not tools.isEmpty()}">
-                    <button class="button">Enviar Petición</button>
                 </tr>
 
             </form>
@@ -72,7 +71,6 @@
                     <img class="img"  src="../static/images/FabLab.png" th:src="@{images/FabLab.png}">
                     <h1 class="h1 Title">Sistema de Inventario</h1>
                     <h2 class="subtext">Ingrese sus datos y la herramienta que desea pedir en préstamo</h2>
-
 
                 </div>
             </div>
