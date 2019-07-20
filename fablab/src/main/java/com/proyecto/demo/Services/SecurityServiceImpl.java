@@ -9,7 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SecurityServiceImpl implements SecurityService {
+public class SecurityServiceImpl  {
+    /*
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -34,5 +35,5 @@ public class SecurityServiceImpl implements SecurityService {
         if(usernamePasswordAuthenticationToken.isAuthenticated()){
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
         }
-    }
+    }*/
 }
