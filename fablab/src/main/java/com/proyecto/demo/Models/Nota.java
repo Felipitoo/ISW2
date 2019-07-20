@@ -15,7 +15,7 @@ public class Nota implements Serializable {
         this.status = status;
     }
 
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Id
     @Column(name="id2")
     private long id2;
