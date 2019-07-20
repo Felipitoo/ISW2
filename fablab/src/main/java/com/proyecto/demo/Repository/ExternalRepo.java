@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository("ExternalRepo")
 public interface ExternalRepo extends JpaRepository <External, Integer> {
-    List<External> findAllById_external(int id);
+    List<External> findAllById(int id);
 }
