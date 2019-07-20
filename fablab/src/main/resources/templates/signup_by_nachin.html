@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>FabLab</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,7 +17,7 @@
 <nav class="navbar navbar-light" style="background-color: #FF9933;">
     <a href="" class="navbar-brand"><img style="max-width:30px;
         margin-top: -7px;
-        border-radius: 50%;"  src="../static/image/FabLab.png"> Fab Lab</a>
+        border-radius: 50%;"  src="../static/images/FabLab.png" th:src="@{images/FabLab.png}"> Fab Lab</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
