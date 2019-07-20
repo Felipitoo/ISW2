@@ -23,7 +23,12 @@ public class Loan {
     @OneToMany
     public Set<Tool> tool;
 
-    public Loan() {}
+    public Loan(Loan loan) {
+        this.loan_number = loan.getLoan_number();
+        this.loan_date = loan.getdate();
+        this.external = loan.getexternal();
+        this.tool = loan.gettool();
+    }
 
     public Loan(int loan_number, Date loan_date, External external, Tool tool) {
         this.loan_number = loan_number;
@@ -37,6 +42,11 @@ public class Loan {
     public int getLoan_number() {
         return loan_number;
     }
+    public Date getdate() {
+        return loan_date;
+    }
+    public Set<External> getexternal() { return external; }
+    public Set<Tool> gettool(){return tool;}
 
     public void setLoan_number(int loan_number) {
         this.loan_number = loan_number;
