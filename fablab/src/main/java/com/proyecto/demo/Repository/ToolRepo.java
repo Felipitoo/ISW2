@@ -10,4 +10,5 @@ import java.util.List;
 @Repository("ToolRepo")
 public interface ToolRepo extends JpaRepository <Tool, Integer> {
     List<Tool> findAllByAvailability(int disp);
+    Tool findAllById_tool(int Id);
 }

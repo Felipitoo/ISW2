@@ -54,4 +54,7 @@ public class ToolService {
     public List<Tool> obtenerDisponibles(int num){
         return convertidor.convertirListaTool(ToolRepo.findAllByAvailability(num));
     }
+    public Tool getById(int id){
+        return ToolRepo.findAllById_tool(id);
+    }
 }

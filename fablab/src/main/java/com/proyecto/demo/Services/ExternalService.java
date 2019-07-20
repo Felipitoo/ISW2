@@ -54,4 +54,7 @@ public class ExternalService {
         return convertidor.convertirListaExternal(ExternalRepo.findAll());
     }
 
+    public List<External> getById(int id){
+        return convertidor.convertirListaExternal(ExternalRepo.findAllById_external(id));
+    }
 }
