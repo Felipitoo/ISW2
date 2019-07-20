@@ -1,36 +1,36 @@
 package com.proyecto.demo.Services;
 
 import com.proyecto.demo.Converter.Convertidor;
-import com.proyecto.demo.Models.Loan;
-import com.proyecto.demo.Repository.LoanRepo;
+import com.proyecto.demo.Models.Tool;
+import com.proyecto.demo.Repository.ToolRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("LoanService")
-public class LoanService {
+@Service("ToolService")
+public class ToolService {
     @Autowired
-    @Qualifier("LoanRepo")
-    private LoanRepo repositorio;
+    @Qualifier("ToolRepo")
+    private ToolRepo ToolRepo;
 
     @Autowired
     @Qualifier("convertidor")
     private Convertidor convertidor;
 
-    public boolean crear(Loan loan){
+    public boolean crear(Tool Tool){
         try{
-            repositorio.save(loan);
+            ToolRepo.save(Tool);
             return true;
         }catch(Exception e){
             return false;
         }
     }
 
-    public boolean actualizar(Loan loan){
+    public boolean actualizar(Tool tool){
         try{
-            repositorio.save(loan);
+            ToolRepo.save(tool);
             return true;
         }catch(Exception e){
             return false;
@@ -48,8 +48,10 @@ public class LoanService {
     }
     */
 
-    public List<Loan> obtener(){
-        return convertidor.convertirListaLoan(repositorio.findAll());
+    public List<Tool> obtener(){
+        return convertidor.convertirListaTool(ToolRepo.findAll());
     }
-
+    public List<Tool> obtenerDisponibles(int num){
+        return convertidor.convertirListaTool(ToolRepo.findAllByAvailability(num));
+    }
 }

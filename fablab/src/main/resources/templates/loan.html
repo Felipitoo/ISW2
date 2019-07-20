@@ -48,9 +48,21 @@
                 <h1 class="h1">Formulario de Prestamos</h1>
                 <input type="text" name="full-name" placeholder="Nombre Completo">
                 <input type="text" name="rut" placeholder="Rut (sin puntos ni guión)">
-                <input type="text" name="tool_id" placeholder="Seleccione la herramienta">
+
+                <tr th:each="tool : ${tools}">
+                    <select>
+                        <option th:value="${tool.id_tool}">herramienta</option>
+                    </select>
+                </tr>
+
                 <input type="date" name="date" placeholder="Fecha de prestamo" >
-                <button class="button">Enviar Petición</button>
+
+                <tr th:if="${tools.isEmpty()}">
+                    <td colspan="2"> No hay herramientas disponibles </td>
+                </tr>
+                <tr th:if="${not tools.isEmpty()}">
+                    <button class="button">Enviar Petición</button>
+                </tr>
 
             </form>
         </div>
@@ -167,6 +179,21 @@
     }
 
     input {
+        background-color: #eee;
+        border: none;
+        padding: 12px 15px;
+        margin: 8px 0;
+        width: 100%;
+    }
+
+    select{
+        background-color: #eee;
+        border: none;
+        padding: 12px 15px;
+        margin: 8px 0;
+        width: 100%;
+    }
+    option{
         background-color: #eee;
         border: none;
         padding: 12px 15px;

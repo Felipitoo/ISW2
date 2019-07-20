@@ -24,14 +24,21 @@ public class Tool {
     @JoinColumn
     private Loan loan;
 
-    public Tool() {} 
+    public Tool(){
 
-    public Tool(int id, String name, int availability) { 
+    }
+
+    public Tool(Tool tool) {
+        this.id_tool = tool.getId_tool();
+        this.name = tool.getName();
+        this.availability = tool.getAvailability();
+    }
+
+    public Tool(int id, String name, int availability) {
         this.id_tool = id;
         this.name = name;
         this.availability = availability;
     }
-
 
     public int getId_tool() {
         return id_tool;
@@ -68,14 +75,5 @@ public class Tool {
 	public Object setLoan(Loan loan2) {
 		return null;
 	}
-
-
-
-
-
-
-
-
-
 
 }
