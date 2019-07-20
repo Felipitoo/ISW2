@@ -63,9 +63,9 @@ public class LoanController {
         Set aux1 = new HashSet<External>();
         aux1.add(new_external);
 
-        new_loan.setTool(aux1);
+        //new_loan.setTool(aux1);
         Set aux2 = new HashSet<Tool>();
-        aux2.add(new_external);
+        aux2.add(used_tool);
         new_loan.setTool(aux2);
         LoanService.crear(new_loan);
         // redireccionamiento

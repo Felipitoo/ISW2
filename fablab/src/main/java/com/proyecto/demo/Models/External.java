@@ -30,7 +30,7 @@ public class External {
     }
 
     public External(External external) {
-        this.id_external = getId_external();
+        this.id = getId_external();
         this.name = getName();
         this.rut = getRut();
     }
