@@ -9,48 +9,49 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tbl_type_user")
-public class Type_User {
+public class Typeuser {
     
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID_TYPE_USER")
-    private int id_type_user;
+    private int id;
 
     @Column(name = "TYPE_NAME", length = 100)
-    private String type_name;
+    private String type;
 
-    @OneToMany(mappedBy = "type_user", cascade = CascadeType.ALL)
+    @ManyToMany (mappedBy = "typeusers", cascade = CascadeType.ALL)
     private Set<User> users;
 
 
-    public Type_User() {}
+    public Typeuser() {}
 
-    public Type_User(int id_type_user, String type_name, User users) {
-        this.id_type_user = id_type_user;
-        this.type_name = type_name;
+    public Typeuser(int id_type_user, String type_name, User users) {
+        this.id = id_type_user;
+        this.type = type_name;
         this.users = Stream.of(users).collect(Collectors.toSet());
         this.users.forEach(x -> x.setType_User(this));
 
     }
 
     public int getId_type_user() {
-        return id_type_user;
+        return id;
     }
 
     public void setId_type_user(int id_type_user) {
-        this.id_type_user = id_type_user;
+        this.id = id_type_user;
     }
 
     public String getType_name() {
-        return type_name;
+        return type;
     }
 
     public void setType_name(String type_name) {
-        this.type_name = type_name;
+        this.type = type_name;
     }
 
     @Override
     public String toString() {
-        return "Type_User [id_type_user=" + id_type_user + ", type_name=" + type_name + "]";
+        return "Typeuser [id_type_user=" + id + ", type_name=" + type + "]";
     }
 
     

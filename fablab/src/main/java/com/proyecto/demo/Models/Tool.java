@@ -7,8 +7,9 @@ import javax.persistence.*;
 @Table(name = "tbl_tool")
 public class Tool {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID_TOOL")
-    public int id_tool;
+    public int id;
 
     @Column(name = "NAME")
     public String name;
@@ -26,26 +27,21 @@ public class Tool {
 
     public Tool(){
 
-    }
+    public Tool() {} 
 
-    public Tool(Tool tool) {
-        this.id_tool = tool.getId_tool();
-        this.name = tool.getName();
-        this.availability = tool.getAvailability();
-    }
-
-    public Tool(int id, String name, int availability) {
-        this.id_tool = id;
+    public Tool(int id, String name, int availability) { 
+        this.id = id;
         this.name = name;
         this.availability = availability;
     }
 
+
     public int getId_tool() {
-        return id_tool;
+        return id;
     }
 
     public void setId_tool(int id) {
-        this.id_tool = id;
+        this.id = id;
     }
 
     public int getAvailability() {
@@ -75,5 +71,14 @@ public class Tool {
 	public Object setLoan(Loan loan2) {
 		return null;
 	}
+
+
+
+
+
+
+
+
+
 
 }
