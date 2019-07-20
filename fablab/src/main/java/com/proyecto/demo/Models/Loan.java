@@ -13,7 +13,7 @@ public class Loan {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "LOAN_NUMBER")
-    private int loan_number;
+    private int id;
 
     @Column(name = "LOAN_DATE")
     private Date loan_date;
@@ -27,7 +27,7 @@ public class Loan {
     public Loan() {}
 
     public Loan(int loan_number, Date loan_date, External external, Tool tool) {
-        this.loan_number = loan_number;
+        this.id = loan_number;
         this.loan_date = loan_date;
         this.external = Stream.of(external).collect(Collectors.toSet());
         this.external.forEach(x -> ((External) x).setLoan(this));
@@ -36,11 +36,11 @@ public class Loan {
     }
 
     public int getLoan_number() {
-        return loan_number;
+        return id;
     }
 
     public void setLoan_number(int loan_number) {
-        this.loan_number = loan_number;
+        this.id = loan_number;
     }
     
     

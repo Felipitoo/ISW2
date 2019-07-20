@@ -10,7 +10,7 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID_USER")
-    private int id_user; //PK
+    private int id; //PK
 
     @Column(name = "NAME")
     private String name;
@@ -48,7 +48,7 @@ public class User {
     public User(User user) {}
 
     public User(int id_user, String name, String email, String user_name, String password) {
-        this.id_user = id_user;
+        this.id = id_user;
         this.name = name;
         this.email = email;
         this.username = username;
@@ -63,8 +63,8 @@ public class User {
 		return null;
 	}
 
-    public int getId_user() {
-        return id_user;
+    public int getId() {
+        return id;
     }
 
     public String getUsername() {
@@ -83,8 +83,8 @@ public class User {
         this.typeusers = typeusers;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setId(int id_user) {
+        this.id = id_user;
     }
 
     public String getName() {

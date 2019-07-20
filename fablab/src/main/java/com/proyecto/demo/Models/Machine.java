@@ -9,7 +9,7 @@ public class Machine {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID_MACHINE")
-    private int id_machine; //PK
+    private int id; //PK
 
     @Column(name = "USAGE_TIME")
     private int usage_time; //Horas
@@ -27,7 +27,7 @@ public class Machine {
     public Machine() {}
 
     public Machine (int id, int time, String name, int availability) {
-        this.id_machine = id;
+        this.id = id;
         this.usage_time = time;
         this.name = name;
         this.availability = availability;

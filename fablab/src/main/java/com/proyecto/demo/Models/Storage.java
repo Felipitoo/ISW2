@@ -13,7 +13,7 @@ public class Storage {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID_STORAGE")
-    private int id_storage;
+    private int id;
 
     @Column(name = "DATE")
     private Date date;
@@ -28,18 +28,18 @@ public class Storage {
     public Storage() {}
 
     public Storage(int id, Date date, Tool tools) {
-        this.id_storage = id;
+        this.id = id;
         this.date = date;
         this.tools = Stream.of(tools).collect(Collectors.toSet());
         this.tools.forEach(x -> x.setStorage(this));
     }
 
     public int getId_storage() {
-        return id_storage;
+        return id;
     }
 
     public void setId_storage(int id) {
-        this.id_storage = id;
+        this.id = id;
     }
 
 	public Date getDate() {

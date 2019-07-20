@@ -14,7 +14,7 @@ public class Group {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID_GROUP")
-    private int id_group; //PK
+    private int id; //PK
 
     @Column(name = "NAME_GROUP", length = 100)
     private String name_group;
@@ -32,7 +32,7 @@ public class Group {
     public Group() {}
     
     public Group(int id_group, String name_group, User users, Machine machines, Storage storages) {
-        this.id_group = id_group;
+        this.id = id_group;
         this.name_group = name_group;
         //this.users = Stream.of(users).collect(Collectors.toSet());
         //this.users.forEach(x -> x.setGroup(this));
@@ -46,11 +46,11 @@ public class Group {
 	}
 
 	public int getId_group() {
-        return id_group;
+        return id;
     }
 
     public void setId_group(int id_group) {
-        this.id_group = id_group;
+        this.id = id_group;
     }
 
     public String getName_group() {
@@ -63,7 +63,7 @@ public class Group {
 
     @Override
     public String toString() {
-        return "Group [id_group=" + id_group + ", name_group=" + name_group + "]";
+        return "Group [id_group=" + id + ", name_group=" + name_group + "]";
     }
 
     

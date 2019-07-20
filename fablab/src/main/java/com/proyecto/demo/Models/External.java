@@ -8,7 +8,7 @@ public class External {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID_EXTERNAL")
-    private int id_external;
+    private int id;
 
     @Column(name = "NAME")
     private String name;
@@ -24,7 +24,7 @@ public class External {
     public External() {}
 
     public External(int id_external, String name, String rut) {
-        this.id_external = id_external;
+        this.id = id_external;
         this.name = name;
         this.rut = rut;
     }
@@ -46,11 +46,11 @@ public class External {
     }
 
     public int getId_external() {
-        return id_external;
+        return id;
     }
 
     public void setId_external(int id_external) {
-        this.id_external = id_external;
+        this.id = id_external;
     }
 
 	public Object setLoan(Loan loan2) {
