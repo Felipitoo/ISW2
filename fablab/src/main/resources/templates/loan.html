@@ -52,7 +52,7 @@
                     <input type="text" name="rut" placeholder="Rut (sin puntos ni guión)">
                     <select name="tool_id">
                         <tr th:each="tool : ${tools}">
-                            <option th:value="${tool.id_tool}" th:text="${tool.getName()}"></option>
+                            <option th:value="${tool.getId_tool()}" th:text="${tool.getName()}"></option>
                         </tr>
                     </select>
                     <input type="date" name="date" placeholder="Fecha de prestamo" >

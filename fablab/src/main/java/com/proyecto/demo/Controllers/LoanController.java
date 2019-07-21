@@ -44,10 +44,10 @@ public class LoanController {
     @PostMapping("/enviar")
     public String GuardarPrestamo(@ModelAttribute ("full_name") String full_name, @ModelAttribute ("rut") String rut,
                                   @ModelAttribute ("date") Date date, @ModelAttribute ("tool_id") int tool_id){
-        System.out.println(full_name);
-        System.out.println(rut);
-        System.out.println(date);
-        System.out.println(tool_id);
+        //System.out.println(full_name);
+        //System.out.println(rut);
+        //System.out.println(date);
+        //System.out.println(tool_id);
         // creacion de nuevo external
         External new_external = new External();
         new_external.setName(full_name);

@@ -34,6 +34,9 @@ public class Tool {
     }
 
     public Tool(Tool tool) {
+        this.id = tool.id;
+        this.name = tool.name;
+        this.availability = tool.availability;
     }
 
     public int getId_tool() {
