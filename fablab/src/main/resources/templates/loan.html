@@ -20,7 +20,7 @@
 <nav class="navbar navbar-light" style="background-color: #FF9933;">
     <a href="" class="navbar-brand"><img style="max-width:30px;
         margin-top: -7px;
-        border-radius: 50%;"  src="../static/images/FabLab.png" th:src="@{images/FabLab.png}"> Fab Lab</a>
+        border-radius: 50%;"  th:src="@{images/FabLab.png}"> Fab Lab</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -31,10 +31,10 @@
                 <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="signup.html">Registrarse</a>
+                <a class="nav-link" href="login">Log In</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="signup.html">Crear Cuenta</a>
+                <a class="nav-link" href="signup">Sign Up</a>
             </li>
         </ul>
     </div>
@@ -68,7 +68,7 @@
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-right">
-                    <img class="img"  src="../static/images/FabLab.png" th:src="@{images/FabLab.png}">
+                    <img class="img"  th:src="@{images/FabLab.png}">
                     <h1 class="h1 Title">Sistema de Inventario</h1>
                     <h2 class="subtext">Ingrese sus datos y la herramienta que desea pedir en préstamo</h2>
 
@@ -142,12 +142,6 @@
     .img{
         border-radius: 50%;
         width: 100px;
-    }
-
-    .img-logo{
-        max-width:30px;
-        margin-top: -7px;
-        border-radius: 50%;
     }
 
     button:active {
