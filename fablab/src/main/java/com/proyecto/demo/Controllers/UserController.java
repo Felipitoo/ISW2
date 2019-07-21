@@ -24,6 +24,10 @@ public class UserController {
     @Autowired
     private SecurityService securityService;
 
+    @RequestMapping("/loan")
+    public String loan(){
+        return "redirect:/formulario/loan";
+    }
 
     @GetMapping("/signup")
     public String signup(Model model){
