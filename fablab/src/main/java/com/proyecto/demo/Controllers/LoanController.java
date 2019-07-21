@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -32,22 +34,6 @@ public class LoanController {
     @Autowired
     private ExternalService ExternalService;
 
-
-    @RequestMapping("/signup")
-    public String signup(){
-        return "redirect:/signup";
-    }
-
-    @RequestMapping("/login")
-    public String login(){
-        return "redirect:/login";
-    }
-
-    @RequestMapping("/index")
-    public String index(){
-        return "redirect:/";
-    }
-
     @GetMapping("/loan")
     public ModelAndView devolverDisponibles(){
         int num = 1;
@@ -59,12 +45,13 @@ public class LoanController {
     }
     @PostMapping("/enviar")
     public String GuardarPrestamo(@ModelAttribute ("full_name") String full_name, @ModelAttribute ("rut") String rut,
-                                  @ModelAttribute ("date") Date date, @ModelAttribute ("tool_id") int tool_id){
+                                  @ModelAttribute ("date") String date, @ModelAttribute ("tool_id") int tool_id) throws ParseException {
         //System.out.println(full_name);
         //System.out.println(rut);
         //System.out.println(date);
         //System.out.println(tool_id);
         // creacion de nuevo external
+
         External new_external = new External();
         new_external.setName(full_name);
         new_external.setRut(rut);
@@ -75,7 +62,9 @@ public class LoanController {
         System.out.println(Tool.class.getName());
         Loan new_loan = new Loan();
 
-        new_loan.setDate(date);
+        SimpleDateFormat parse_aux =new SimpleDateFormat("yyyy-MM-dd");
+        Date aux_date = parse_aux.parse(date);
+        new_loan.setDate(aux_date);
         Set aux1 = new HashSet<External>();
         aux1.add(new_external);
 
@@ -85,6 +74,8 @@ public class LoanController {
         new_loan.setTool(aux2);
         LoanService.crear(new_loan);
         // redireccionamiento
+
+
         return "redirect:/formulario/loan";
 
 
