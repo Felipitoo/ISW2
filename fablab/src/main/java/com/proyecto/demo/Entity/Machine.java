@@ -1,11 +1,13 @@
-package com.proyecto.demo.Models;
+package com.proyecto.demo.Entity;
 
+import com.proyecto.demo.Models.Group;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "tbl_machine")
-public class Machine {
+public class Machine implements Serializable {
     @Id
     @Column(name = "ID_MACHINE")
     private int id_machine; //PK
@@ -23,7 +25,10 @@ public class Machine {
     @JoinColumn
     private Group group;
 
-    public Machine() {}
+    private static final long serialVersionUID = 1L;
+
+    public Machine() {
+    }
 
     public Machine (int id, int time, String name, int availability) {
         this.id_machine = id;
@@ -34,36 +39,4 @@ public class Machine {
 
     public Machine(Machine mach) {
     }
-
-    public int getUsage_time() {
-        return usage_time;
-    }
-
-    public int getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(int availability) {
-        this.availability = availability;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setUsage_time(int usage_time) {
-        this.usage_time = usage_time;
-    }
-
-	public Object setGroup(Group group2) {
-		return null;
-	}
-
-
-
-
 }
