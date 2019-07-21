@@ -26,6 +26,13 @@ public class Loan {
 
     public Loan() {}
 
+    public Loan(Loan loan) {
+        this.id = loan.getLoan_number();
+        this.loan_date = loan.getdate();
+        this.external = loan.getexternal();
+        this.tool = loan.gettool();
+    }
+
     public Loan(int loan_number, Date loan_date, External external, Tool tool) {
         this.id = loan_number;
         this.loan_date = loan_date;
@@ -38,12 +45,42 @@ public class Loan {
     public int getLoan_number() {
         return id;
     }
+    public Date getdate() {
+        return loan_date;
+    }
+    public Set<External> getexternal() { return external; }
+    public Set<Tool> gettool(){return tool;}
 
     public void setLoan_number(int loan_number) {
         this.id = loan_number;
     }
-    
-    
 
 
+    public void setDate(Date date) {
+        this.loan_date=date;
+    }
+
+    public Date getLoan_date() {
+        return loan_date;
+    }
+
+    public void setLoan_date(Date loan_date) {
+        this.loan_date = loan_date;
+    }
+
+    public Set<External> getExternal() {
+        return external;
+    }
+
+    public void setExternal(Set<External> external) {
+        this.external = external;
+    }
+
+    public Set<Tool> getTool() {
+        return tool;
+    }
+
+    public void setTool(Set<Tool> tool) {
+        this.tool = tool;
+    }
 }

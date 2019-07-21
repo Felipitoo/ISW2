@@ -1,36 +1,38 @@
 package com.proyecto.demo.Services;
 
 import com.proyecto.demo.Converter.Convertidor;
-import com.proyecto.demo.Models.Loan;
-import com.proyecto.demo.Repository.LoanRepo;
+import com.proyecto.demo.Models.External;
+import com.proyecto.demo.Repository.ExternalRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("LoanService")
-public class LoanService {
+
+@Service("ExternalService")
+public class ExternalService {
     @Autowired
-    @Qualifier("LoanRepo")
-    private LoanRepo repositorio;
+    @Qualifier("ExternalRepo")
+    private com.proyecto.demo.Repository.ExternalRepo ExternalRepo;
 
     @Autowired
     @Qualifier("convertidor")
     private Convertidor convertidor;
 
-    public boolean crear(Loan loan){
+    public boolean crear(External external){
         try{
-            repositorio.save(loan);
+            ExternalRepo.save(external);
             return true;
         }catch(Exception e){
             return false;
         }
     }
 
-    public boolean actualizar(Loan loan){
+
+    public boolean actualizar(External external){
         try{
-            repositorio.save(loan);
+            ExternalRepo.save(external);
             return true;
         }catch(Exception e){
             return false;
@@ -48,8 +50,11 @@ public class LoanService {
     }
     */
 
-    public List<Loan> obtener(){
-        return convertidor.convertirListaLoan(repositorio.findAll());
+    public List<External> obtener(){
+        return convertidor.convertirListaExternal(ExternalRepo.findAll());
     }
 
+    public List<External> getById(int id){
+        return convertidor.convertirListaExternal(ExternalRepo.findAllById(id));
+    }
 }

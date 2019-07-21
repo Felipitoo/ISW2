@@ -25,7 +25,7 @@ public class Tool {
     @JoinColumn
     private Loan loan;
 
-    public Tool() {} 
+    public Tool() {}
 
     public Tool(int id, String name, int availability) { 
         this.id = id;
@@ -33,6 +33,11 @@ public class Tool {
         this.availability = availability;
     }
 
+    public Tool(Tool tool) {
+        this.id = tool.id;
+        this.name = tool.name;
+        this.availability = tool.availability;
+    }
 
     public int getId_tool() {
         return id;
