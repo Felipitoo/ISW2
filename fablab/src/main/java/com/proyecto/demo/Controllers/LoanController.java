@@ -32,6 +32,22 @@ public class LoanController {
     @Autowired
     private ExternalService ExternalService;
 
+
+    @RequestMapping("/signup")
+    public String signup(){
+        return "redirect:/signup";
+    }
+
+    @RequestMapping("/login")
+    public String login(){
+        return "redirect:/login";
+    }
+
+    @RequestMapping("/index")
+    public String index(){
+        return "redirect:/";
+    }
+
     @GetMapping("/loan")
     public ModelAndView devolverDisponibles(){
         int num = 1;
