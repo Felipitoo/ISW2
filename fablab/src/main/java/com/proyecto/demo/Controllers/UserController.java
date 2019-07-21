@@ -29,6 +29,11 @@ public class UserController {
         return "redirect:/formulario/loan";
     }
 
+    @RequestMapping("/index")
+    public String index(){
+        return "redirect:/";
+    }
+
     @GetMapping("/signup")
     public String signup(Model model){
         model.addAttribute("userForm", new User());
