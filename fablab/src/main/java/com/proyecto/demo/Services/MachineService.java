@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("MachineService")
@@ -50,6 +51,18 @@ public class MachineService {
 
     public List<Machine> obtenerPorLista(){
         return cmach.convertirListaMachine(rmach.findAll());
+
+    }
+
+    public List<Machine> obtenerAlgunos(){
+        List<Machine> aux = cmach.convertirListaMachine(rmach.findAll());
+        List<Machine> retorno = new ArrayList<Machine>();
+        for (int i = 0; i < aux.size(); i++) {
+            if (aux.get(i).getAvailability() == 1) {
+                retorno.add(aux.get(i));
+            }
+        }
+        return retorno;
     }
 
 

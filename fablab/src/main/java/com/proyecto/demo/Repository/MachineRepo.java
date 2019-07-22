@@ -14,4 +14,6 @@ import java.util.List;
 public interface MachineRepo extends JpaRepository<Machine, Integer> {
 
     public abstract Machine findByName(String name);
+
+    public abstract List<Machine> findByAvailability(Integer availability);
 }
