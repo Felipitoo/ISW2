@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,11 +29,7 @@ public class UserController {
     public String loan(){
         return "redirect:/formulario/loan";
     }
-
-    @RequestMapping("/index")
-    public String index(){
-        return "redirect:/";
-    }
+  
 
     @GetMapping("/signup")
     public String signup(Model model){
@@ -41,15 +38,15 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public String signup(@ModelAttribute("userForm") User userForm, BindingResult bindingResult){
-
+    public String signup(@ModelAttribute("userForm") User userForm, BindingResult bindingResult,RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
             return "signup";
         }
         userService.save(userForm);
         securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
-
-        return "redirect:/secret";
+        redirectAttributes.addFlashAttribute("message", "El usuario ha sido creado correctamente");
+        redirectAttributes.addFlashAttribute("alertClass", "alert-success");
+        return "redirect:index";
     }
 
     @GetMapping("/login")
