@@ -19,6 +19,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/machine")
 public class MachineController {
+
     @Autowired
     @Qualifier("MachineService")
     private MachineService smach;
