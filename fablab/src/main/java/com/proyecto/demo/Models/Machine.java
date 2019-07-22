@@ -1,6 +1,9 @@
 package com.proyecto.demo.Models;
 
 
+import com.proyecto.demo.Repository.GroupRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 
 @Entity
@@ -24,7 +27,12 @@ public class Machine {
     @JoinColumn
     private Group group;
 
+
     public Machine() {}
+
+    public Group getGroup() {
+        return group;
+    }
 
     public Machine (int id, int time, String name, int availability) {
         this.id = id;
@@ -34,6 +42,11 @@ public class Machine {
     }
 
     public Machine(Machine mach) {
+        this.id = mach.getId();
+        this.usage_time = mach.getUsage_time();
+        this.name = mach.getName();
+        this.availability = mach.getAvailability();
+        this.group = mach.getGroup();
     }
 
     public int getUsage_time() {
