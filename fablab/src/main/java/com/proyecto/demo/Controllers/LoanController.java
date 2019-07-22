@@ -38,6 +38,17 @@ public class LoanController {
     @Autowired
     private LoanRepo loanRepo;
 
+
+    @RequestMapping("/login")
+    public String login_loan(){
+        return "redirect:/login";
+    }
+
+    @RequestMapping("/signup")
+    public String signup(){
+        return "redirect:/signup";
+    }
+
     @GetMapping("/loan")
     public ModelAndView devolverDisponibles(){
         int num = 1;
@@ -47,6 +58,7 @@ public class LoanController {
         mav.addObject("tools", list_tools);
         return mav;
     }
+
     @PostMapping("/enviar")
     public String GuardarPrestamo(@ModelAttribute ("full_name") String full_name, @ModelAttribute ("rut") String rut,
                                   @ModelAttribute ("date") String date, @ModelAttribute ("tool_id") int tool_id) throws ParseException {
