@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -54,13 +55,14 @@
 
     <tr class="row">
         <div class="col-lg-3 col-md-6">
-            <tr th:each="mach : ${mach}">
+            <tr th:each="machine : ${mach}">
              <div class="card">
                  <div class="card-body">
                     <img src="http://pm1.narvii.com/6328/5a29ffab58fa1271161d4cdc82d566ec8659d47e_00.jpg" alt = "" class="img-fluid rounded-circle w-50 mb-3">
-                    <span th:text="${mach.getName()}"> Nombre </span>
+
+                    <span th:text="${machine.getName()}"> Nombre </span>
                      <br></br>
-                     <span th:text="${mach.getId()}"> ID </span>
+                     <span th:text="${machine.getId}"> ID </span>
                 </div>
             </div>
             </tr>
