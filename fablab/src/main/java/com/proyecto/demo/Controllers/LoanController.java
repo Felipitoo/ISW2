@@ -4,6 +4,7 @@ import com.proyecto.demo.Models.External;
 import com.proyecto.demo.Models.Loan;
 import com.proyecto.demo.Models.Tool;
 
+import com.proyecto.demo.Repository.LoanRepo;
 import com.proyecto.demo.Services.LoanService;
 import com.proyecto.demo.Services.ToolService;
 import com.proyecto.demo.Services.ExternalService;
@@ -34,6 +35,9 @@ public class LoanController {
     @Autowired
     private ExternalService ExternalService;
 
+    @Autowired
+    private LoanRepo loanRepo;
+
     @GetMapping("/loan")
     public ModelAndView devolverDisponibles(){
         int num = 1;
@@ -55,7 +59,6 @@ public class LoanController {
         External new_external = new External();
         new_external.setName(full_name);
         new_external.setRut(rut);
-        ExternalService.crear(new_external);
 
         // creacion de nuevo loan prestamo
         Tool used_tool = ToolService.getById(tool_id);
@@ -67,12 +70,14 @@ public class LoanController {
         new_loan.setDate(aux_date);
         Set aux1 = new HashSet<External>();
         aux1.add(new_external);
-
         //new_loan.setTool(aux1);
         Set aux2 = new HashSet<Tool>();
         aux2.add(used_tool);
         new_loan.setTool(aux2);
         LoanService.crear(new_loan);
+        new_external.setLoan(loanRepo.getOne(new_loan.getLoan_number()));
+        ExternalService.crear(new_external);
+
         // redireccionamiento
 
 
