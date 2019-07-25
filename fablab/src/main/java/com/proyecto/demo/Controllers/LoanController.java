@@ -38,6 +38,10 @@ public class LoanController {
     @Autowired
     private LoanRepo loanRepo;
 
+    @RequestMapping("/index")
+    public String index_loan(){
+        return "redirect:/index";
+    }
 
     @RequestMapping("/login")
     public String login_loan(){
