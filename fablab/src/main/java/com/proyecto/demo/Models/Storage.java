@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(name = "tbl_storage")
 public class Storage {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID_STORAGE")
     private int id;
 
@@ -24,6 +24,26 @@ public class Storage {
 
     @OneToMany(mappedBy = "storage", cascade = CascadeType.ALL)
     private Set<Tool> tools;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public Set<Tool> getTools() {
+        return tools;
+    }
+
+    public void setTools(Set<Tool> tools) {
+        this.tools = tools;
+    }
 
     public Storage() {}
 

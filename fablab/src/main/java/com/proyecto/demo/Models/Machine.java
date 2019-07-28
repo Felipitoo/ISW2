@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table(name = "tbl_machine")
 public class Machine {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID_MACHINE")
     private int id; //PK
 

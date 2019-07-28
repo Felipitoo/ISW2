@@ -8,7 +8,7 @@ import java.util.Set;
 public class User { 
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID_USER")
     private int id; //PK
 
@@ -27,10 +27,10 @@ public class User {
     @ManyToMany
     private Set<Typeuser> typeusers;
 
-    /*
+
     @ManyToOne
-    @JoinColumn
-    private Group group;*/
+    @JoinColumn(name = "id_group")
+    private Group group;
 
     @Transient
     private String passwordConfirm;
@@ -45,9 +45,17 @@ public class User {
 
     public User() {}
 
-    public User(User user) {}
+    public User(User user) {
+        this.id = user.getId();
+        this.name = user.getName();
+        this.email = user.getEmail();
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.group = user.getGroup();
+        this.typeusers = user.getTypeusers();
+    }
 
-    public User(int id_user, String name, String email, String user_name, String password) {
+    public User(int id_user, String name, String email, String username, String password) {
         this.id = id_user;
         this.name = name;
         this.email = email;
@@ -59,7 +67,11 @@ public class User {
 		return null;
 	}
 
-	public Object setType_User(Typeuser typeuser2) {
+    public Group getGroup() {
+        return group;
+    }
+
+    public Object setType_User(Typeuser typeuser2) {
 		return null;
 	}
 
