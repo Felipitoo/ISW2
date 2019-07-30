@@ -44,26 +44,27 @@
 <div class="body">
     <div class="container" id="container">
         <div class="form-container sign-in-container">
-            <form th:action="@{/formulario/enviar}" method="post">
-                <h1 class="h1">Formulario de Prestamos</h1>
-
-                <tr th:if="${not tools.isEmpty()}">
+            <tr th:if="${not tools.isEmpty()}">
+                <form th:action="@{/formulario/enviar}" method="post">
+                    <h1 class="h1">Formulario de Prestamos</h1>
                     <input type="text" name="full_name" placeholder="Nombre Completo">
                     <input type="text" name="rut" placeholder="Rut (sin puntos ni guión)">
+                    <input type="text" name="date" placeholder="Año-Mes-Dia" >
+
                     <select name="tool_id">
+                        <option value="" disabled selected hidden>Seleccione la herramienta</option>
                         <tr th:each="tool : ${tools}">
                             <option th:value="${tool.getId_tool()}" th:text="${tool.getName()}"></option>
                         </tr>
                     </select>
-                    <input type="text" name="date" placeholder="Año-Mes-Dia" >
-                    <button class="button">Enviar Petición</button>
-                </tr>
-
-                <tr th:if="${tools.isEmpty()}">
-                    <td colspan="2"> No hay herramientas disponibles </td>
-                </tr>
-
-            </form>
+                    <tr th:if="${not tools.isEmpty()}">
+                        <button class="button">Enviar Petición</button>
+                    </tr>
+                </form>
+            </tr>
+            <tr th:if="${tools.isEmpty()}">
+                <h1 class="tool_message">No hay herramientas disponibles por el momento</h1>
+            </tr>
         </div>
         <div class="overlay-container">
             <div class="overlay">
@@ -111,6 +112,14 @@
     h2 {
         text-align: center;
     }
+    .tool_message{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        text-align: center;
+        font-size: 25px;
+        margin-top: 200px;
+        padding: 0px 10px 10px 10px;
+    }
 
     p {
         font-size: 14px;
@@ -124,6 +133,7 @@
         font-size: 12px;
     }
 
+
     .button {
         border-radius: 20px;
         border: 1px solid #FF8000;
@@ -134,7 +144,6 @@
         padding: 12px 45px;
         letter-spacing: 1px;
         text-transform: uppercase;
-        transition: transform 80ms ease-in;
         margin: 10px;
 
     }
@@ -142,14 +151,6 @@
     .img{
         border-radius: 50%;
         width: 100px;
-    }
-
-    button:active {
-        transform: scale(0.95);
-    }
-
-    button:focus {
-        outline: none;
     }
 
     .subtext{

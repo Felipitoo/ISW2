@@ -70,33 +70,42 @@ public class LoanController {
         //System.out.println(rut);
         //System.out.println(date);
         //System.out.println(tool_id);
-        // creacion de nuevo external
 
+        // creacion de nuevo external
         External new_external = new External();
         new_external.setName(full_name);
         new_external.setRut(rut);
 
-        // creacion de nuevo loan prestamo
+        // busqueda de tool que se prestara
         Tool used_tool = ToolService.getById(tool_id);
         System.out.println(Tool.class.getName());
-        Loan new_loan = new Loan();
 
+        // crear un nuevo loan
+        Loan new_loan = new Loan();
+        // crear la nueva fecha
         SimpleDateFormat parse_aux =new SimpleDateFormat("yyyy-MM-dd");
         Date aux_date = parse_aux.parse(date);
         new_loan.setDate(aux_date);
+
+        // setear las claves foraneas
         Set aux1 = new HashSet<External>();
         aux1.add(new_external);
-        //new_loan.setTool(aux1);
+
         Set aux2 = new HashSet<Tool>();
         aux2.add(used_tool);
+
+        // setear las foraneas a loan
+        new_loan.setExternal(aux2);
         new_loan.setTool(aux2);
         LoanService.crear(new_loan);
         new_external.setLoan(loanRepo.getOne(new_loan.getLoan_number()));
         ExternalService.crear(new_external);
 
+        // dejar desavilitada la herramienta
+        used_tool.setAvailability(0);
+        ToolService.crear(used_tool);
+
         // redireccionamiento
-
-
         return "redirect:/formulario/loan";
 
 
