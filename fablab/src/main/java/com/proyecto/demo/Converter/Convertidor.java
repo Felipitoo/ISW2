@@ -1,6 +1,7 @@
 package com.proyecto.demo.Converter;
 
 import com.proyecto.demo.Models.External;
+import com.proyecto.demo.Models.Group;
 import com.proyecto.demo.Models.Loan;
 import com.proyecto.demo.Models.Tool;
 import org.springframework.stereotype.Component;
@@ -32,4 +33,13 @@ public class Convertidor {
         }
         return list_external;
     }
+
+    public List<Group> convertirListaGroup(List<Group> groups) {
+        List<Group> list_group = new ArrayList<>();
+        for(Group grupo : groups){
+            list_group.add(new Group (grupo));
+        }
+        return list_group;
+    }
+
 }
